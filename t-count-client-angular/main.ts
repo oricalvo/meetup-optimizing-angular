@@ -1,13 +1,16 @@
-let host = "http://localhost:3000";
+import {HttpClient} from "@angular/common/http";
+import {ApplicationRef, NgZone} from "@angular/core";
+
+let serverUrl = "http://localhost:3000";
 let http;
 
-export function config({host: h, http: ht}) {
-    host = h;
-    http = ht;
+export function config(args: {serverUrl: string, http: HttpClient}) {
+    serverUrl = args.serverUrl;
+    http = args.http;
 }
 
 export function reportCounter({name, value}) {
-    http.post(host + "/api/counter",
+    http.post(serverUrl + "/api/counter",
         {name, value},
     ).toPromise();
 }
@@ -18,7 +21,7 @@ export function reportCounters(counters) {
     }
 }
 
-export function trackComponents(appRef, ngZone) {
+export function trackComponents(appRef: ApplicationRef, ngZone: NgZone) {
     ngZone.runOutsideAngular(function() {
         setInterval(function() {
             const stats = {
@@ -26,9 +29,9 @@ export function trackComponents(appRef, ngZone) {
                 bindingCount: 0,
             };
 
-            scanNodes(appRef._views["0"]._view.nodes, stats);
+            scanNodes(appRef["_views"]["0"]._view.nodes, stats);
 
-            http.post("http://localhost:3000/api/counter", [
+            http.post(`${serverUrl}/api/counter`, [
                 {name: "components", value: stats.componentCount},
                 {name: "binding", value: stats.bindingCount},
             ]).toPromise();
@@ -36,7 +39,7 @@ export function trackComponents(appRef, ngZone) {
     });
 }
 
-export function trackChangeDetection(appRef, ngZone) {
+export function trackChangeDetection(appRef: ApplicationRef, ngZone: NgZone) {
     let totalTick = 0;
     let countTick = 0;
     const originalTick = appRef.tick;
@@ -54,7 +57,7 @@ export function trackChangeDetection(appRef, ngZone) {
         const avg = totalTick / countTick;
 
         ngZone.runOutsideAngular(function() {
-            http.post("http://localhost:3000/api/counter", [
+            http.post(`${serverUrl}/api/counter`, [
                 {name: "cd (avg)", value: avg},
                 {name: "cd (last)", value: duration},
                 {name: "cd (count)", value: countTick},

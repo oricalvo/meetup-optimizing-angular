@@ -19,6 +19,6 @@ if(config.env == 'prod') {
 
 registerApi(app);
 
-app.listen(3000, function() {
-  console.log("Server is running");
+app.listen(config.port, function() {
+  console.log("Server is running on port " + config.port);
 });
