@@ -8,7 +8,7 @@ import {appStore} from './app.store';
 })
 export class AppComponent {
   constructor() {
-    console.log("ctor");
+    console.log("AppComponent.ctor");
   }
 
   get counter() {
