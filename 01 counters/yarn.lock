@@ -6717,9 +6717,9 @@ t-count-client-angular@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/t-count-client-angular/-/t-count-client-angular-1.0.3.tgz#51fc74e7f49e5bb69308b23d66abf35ab1e4966a"
 
-t-count-server@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/t-count-server/-/t-count-server-1.0.4.tgz#8b776badf166424554d896cc1ac18cc01d747b25"
+t-count-server@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/t-count-server/-/t-count-server-1.0.6.tgz#3a86096893637bbedec695473cdb5963ff32a2ad"
   dependencies:
     body-parser "^1.18.2"
     cors "^2.8.4"

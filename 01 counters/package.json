@@ -24,7 +24,7 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "t-count-client-angular": "^1.0.3",
-    "t-count-server": "^1.0.4",
+    "t-count-server": "^1.0.6",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
